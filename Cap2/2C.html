@@ -1,0 +1,48 @@
+<!doctype html><html><head></head><body><!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio c</title>
+</head>
+
+<body>
+	<h1>Supermecado JS</h1>
+	<p>Produto <input type="text" id="idProduto"></p>
+		<p>Preço <input type="text" id="idPreco"></p>
+			<input type="button" value="Ver Promoção" id="idCalcular">
+
+			<p id="mostrar1"></p>
+			<p id="mostrar2"></p>
+			<p>
+</body>
+
+</html><script type="text/javascript">
+function mostrar() {
+  //declarando os Id do HTML
+  var varProduto = document.getElementById("idProduto").value;
+  var varPreco = Number(document.getElementById("idPreco").value);
+
+  varPreco = Number(varPreco);
+
+  //Declarando os p que não tem nada
+  var varMostrar1 = document.getElementById("mostrar1");
+  var varMostrar2 = document.getElementById("mostrar2");
+
+//declarando valor total
+  var valorTotal = varPreco;
+  //desconto do terceiro produto
+  var descontoProduto = varPreco / 2;
+  //valor total com 3 compras
+  valorTotal = valorTotal + valorTotal + valorTotal/2;
+
+  varMostrar1.textContent = varProduto + " - Leve 3 por R$ " + valorTotal.toFixed(2);
+ 
+  varMostrar2.textContent = "O 3ª produto terá o desconto de R$ " + descontoProduto.toFixed(2);
+}
+
+
+var botaoMostrarTudo = document.getElementById("idCalcular")
+botaoMostrarTudo.addEventListener("click", mostrar);
+</script></body><html>

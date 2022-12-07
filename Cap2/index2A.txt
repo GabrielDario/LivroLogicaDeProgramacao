@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio a</title>
+</head>
+
+<body>
+	<h1>Farmacia Js</h1>
+	<p>Medicamento <input type="text" id="idRemedio"></p>
+		<p>Preço <input type="text" id="idPreco"></p>
+			<input type="button" value="Ver valor" id="idCalcular">
+
+			<p id="mostrarMedicamento"></p>
+			<p id="mostrarPromocao"></p>
+			<p>
+</body>
+
+</html>

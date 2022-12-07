@@ -1,0 +1,34 @@
+<!doctype html><html><head></head><body><!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio a</title>
+</head>
+
+<body>
+	<h1>Farmacia Js</h1>
+	<p>Medicamento <input type="text" id="idMedicamento"></p>
+		<p>Preço <input type="text" id="idPreco"></p>
+			<input type="button" value="Ver valor" id="idCalcular">
+
+			<p id="mostrarAspirina"></p>
+			<p id="mostrarPromocao"></p>
+			<p>
+</body>
+
+</html><script type="text/javascript">var medicamento = document.getElementById("idMedicamento").value;
+var preco = document.getElementById("idPreco").value;
+
+function calcularMedicamento() {
+  console.log(medicamento);
+
+  var mostrarAspirina = document.getElementById("mostrarAspirina");
+  mostrarAspirina.textContent = "Promoção de " + medicamento;
+ 
+}
+
+var botaoCalcular = document.getElementById("idCalcular");
+
+botaoCalcular.addEventListener("click", calcularMedicamento);</script></body><html>

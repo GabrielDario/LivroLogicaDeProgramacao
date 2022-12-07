@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio b</title>
+</head>
+
+<body>
+	<h1>Lan House JS</h1>
+	<p>Valor por 15 minutos de uso <input type="text" id="idValor15"></p>
+		<p>Tempo de uso do cliente <input type="text" id="idTempo"></p>
+			<input type="button" value="Calcular valor a pagar" id="idCalcular">
+
+			<p id="mostrarValor"></p>
+			<p>
+</body>
+
+</html>

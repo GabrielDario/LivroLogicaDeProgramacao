@@ -1,0 +1,4 @@
+var numero = Number(prompt("Escreva um numero"));
+var nAnterior = Number(numero - 1);
+var nProximo = Number(numero + 1);
+console.log("Vizinhos: " +  nAnterior + " e "+  nProximo)

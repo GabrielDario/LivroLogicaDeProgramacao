@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio C</title>
+</head>
+
+<body>
+	<h1>Programa do Parquímetro</h1>
+		<p>Valor <input type="text" id="valorPago"></p>
+			<input type="button" value="Verificar" id="idCalcular">
+
+			<p id="mostrar1"></p>
+	<p id="mostrar2"></p>
+			<p>
+</body>
+<script>
+	function mostrar() {
+var valorPago = document.getElementById("valorPago").value;
+
+var troco = Number(troco);
+
+var varMostrar1 = document.getElementById("mostrar1");
+var varMostrar2 = document.getElementById("mostrar2");
+
+if (valorPago < 1 ) {
+varMostrar.textContent = "Saldo Insuficiente";
+} 
+
+if (valorPago >= 1 && valorPago < 1.75) {
+varMostrar1.textContent = "Tempo: 30 minutos";
+troco = valorPago - 1
+varMostrar2.textContent = "Troco R$: " + troco;
+} 
+if (valorPago >= 1.75 && valorPago < 3) {
+varMostrar1.textContent = "Tempo: 60 minutos";
+troco = valorPago - 1.75
+varMostrar2.textContent = "Troco R$: " + troco;
+}
+ if (valorPago >= 3) {
+varMostrar1.textContent = "Tempo: 120 minutos";
+troco = valorPago - 3
+varMostrar2.textContent = "Troco R$: " + troco;
+} 
+
+}
+
+var botaoMostrarTudo = document.getElementById("idCalcular")
+botaoMostrarTudo.addEventListener("click", mostrar);
+</script>
+
+</html>

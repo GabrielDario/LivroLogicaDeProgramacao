@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio c</title>
+</head>
+
+<body>
+	<h1>Supermecado JS</h1>
+	<p>Produto <input type="text" id="idProduto"></p>
+		<p>Preço <input type="text" id="idPreco"></p>
+			<input type="button" value="Ver Promoção" id="idCalcular">
+
+			<p id="mostrar1"></p>
+			<p id="mostrar2"></p>
+			<p>
+</body>
+
+</html>

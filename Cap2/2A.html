@@ -1,0 +1,46 @@
+<!doctype html><html><head></head><body><!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio a</title>
+</head>
+
+<body>
+	<h1>Farmacia Js</h1>
+	<p>Medicamento <input type="text" id="idRemedio"></p>
+		<p>Pre�o <input type="text" id="idPreco"></p>
+			<input type="button" value="Ver valor" id="idCalcular">
+
+			<p id="mostrarMedicamento"></p>
+			<p id="mostrarPromocao"></p>
+			<p>
+</body>
+
+</html><script type="text/javascript">
+function mostrar() {
+  //declarando os Id do HTML
+  var medicamento = document.getElementById("idRemedio").value;
+  var preco = Number(document.getElementById("idPreco").value);
+
+  //Declarando os p que n�o tem nada
+  var varMedicamento = document.getElementById("mostrarMedicamento");
+  var varPromocao = document.getElementById("mostrarPromocao");
+  
+  //Valor Bruto
+  var preco = preco * 2;
+
+
+  //Arrendondando pra baixa se tiver virgula e descontar
+  preco = Math.floor(preco);
+  
+  varMedicamento.textContent = "Promo��o de " + medicamento;
+  varPromocao.textContent = "Leve dois por " + preco.toFixed(2);
+
+}
+
+
+var botaoMostrarTudo = document.getElementById("idCalcular")
+botaoMostrarTudo.addEventListener("click", mostrar);
+</script></body><html>

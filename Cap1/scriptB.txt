@@ -1,0 +1,9 @@
+var preco = Number(prompt("Escreva o preço do produto"));
+
+var vista = Number(preco * 0.10);
+vista = preco - vista;
+
+var parcela = Number(preco /3);
+console.log("Preço R$: " + preco);
+console.log("A Vista R$: " + vista);
+console.log("Ou 3x de R$: " + parcela.toFixed(2));

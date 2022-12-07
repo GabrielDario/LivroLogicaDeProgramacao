@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio D</title>
+</head>
+
+<body>
+	<h1>Qual tipo Trinagulo</h1>
+	<p>Lado A <input type="text" id="ladoA"></p>
+		<p>Lado B<input type="text" id="ladoB"></p>
+			<p>Lado C<input type="text" id="ladoC"></p>
+				<input type="button" value="Verificar" id="idCalcular">
+
+				<p id="mostrar1"></p>
+				<p id="mostrar2"></p>
+				<p>
+</body>
+<script>
+	function mostrar() {
+var ladoA = Number(document.getElementById("ladoA").value);
+var ladoB = Number(document.getElementById("ladoB").value);
+var ladoC = Number(document.getElementById("ladoC").value);
+
+var varMostrar1 = document.getElementById("mostrar1");
+var varMostrar2 = document.getElementById("mostrar2");
+
+
+//var soma1 = Number(ladoA + ladoB);
+
+if(ladoA + ladoB < ladoC || ladoA + ladoC < ladoB || ladoB + ladoC < ladoA) {
+varMostrar1.textContent = "Lados NÃO podem formar um triângulo";
+} else if(ladoA == ladoB && ladoB == ladoC) {
+varMostrar1.textContent = "Lados podem formar um triângulo";
+varMostrar2.textContent = "Tipo: Equilatero";
+} else if(ladoA != ladoB && ladoB != ladoC && ladoA != ladoC) {
+  varMostrar1.textContent = "Lados podem formar um triângulo";
+varMostrar2.textContent = "Tipo: Escaleno";
+
+} else {
+ varMostrar1.textContent = "Lados podem formar um triângulo";
+varMostrar2.textContent = "Tipo: Isosceles";
+}
+}
+
+var botaoMostrarTudo = document.getElementById("idCalcular")
+botaoMostrarTudo.addEventListener("click", mostrar);
+</script>
+
+</html>

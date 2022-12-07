@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF08">
+	<meta name="viewport">
+	<title>Exercicio A</title>
+</head>
+
+<body>
+	<h1>Programa Par ou Ímpar</h1>
+	<p>Número <input type="text" id="idNumero"></p>
+			<input type="button" value="Verificar" id="idCalcular">
+
+			<p id="mostrar"></p>
+			<p>
+</body>
+<script>
+function mostrar() {
+var varNumero = document.getElementById("idNumero").value;
+
+varNumero = Number(varNumero);
+
+var varMostrar = document.getElementById("mostrar");
+
+if (varNumero % 2 == 0) {
+varMostrar.textContent = "Resposta: " + varNumero + " é Par";
+}else {
+varMostrar.textContent = "Resposta: " + varNumero + " é Impar";
+}
+}
+
+
+var botaoMostrarTudo = document.getElementById("idCalcular")
+botaoMostrarTudo.addEventListener("click", mostrar);
+</script>
+
+</html>

@@ -1,0 +1,23 @@
+
+function mostrar() {
+  //declarando os Id do HTML
+  var varValor = document.getElementById("idValor15").value;
+  var varTempo = Number(document.getElementById("idTempo").value);
+
+  var valorTotal = Number(valorTotal);
+
+  //Declarando os p que não tem nada
+  var varMostrar = document.getElementById("mostrarValor");
+
+  varTempo = Math.ceil(varTempo / 15);
+  valorTotal = varTempo * varValor;
+
+
+  varMostrar.textContent = "Valor total a pagar R$ " + valorTotal.toFixed(2);
+
+}
+
+
+var botaoMostrarTudo = document.getElementById("idCalcular")
+botaoMostrarTudo.addEventListener("click", mostrar);
+
