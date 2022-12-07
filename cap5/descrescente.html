@@ -1,0 +1,37 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+	<h1>Programa decrescente</h1>
+	<form>
+		<p>
+			Número: <input type="number" id="inNumero" required>
+        </p>
+			<input type="submit" value="Números decrescente">
+    </form>
+
+			<pre></pre>
+
+</body>
+<script>
+	const frm = document.querySelector("form");
+    const resp = document.querySelector("pre");
+
+    frm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const numero = Number(frm.inNumero.value);
+        let resposta = "";
+
+        for (let i = numero; i >= 1; i--) {
+
+
+            resposta = resposta + i + ",";
+        }
+        resp.innerText = resposta;
+    })
+</script>
+
+</html>
