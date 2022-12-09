@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<h1>Programa conta do mês</h1>
+<form>
+	<p>
+		Descrição da Conta: <input type="text" id="descConta" required>
+    </p>
+		<p>
+			Valor da Conta: <input type="number" id="valor" required>
+    </p>
+			<input type="submit" value="Adicionar a Conta">
+</form>
+
+			<pre id="outResp1"></pre>
+			<pre id="outResp2"></pre>
+			</body>
+			<script>
+				const frm = document.querySelector("form");
+	const descConta = document.querySelector("#descConta");
+	const valor = document.querySelector("#valor");
+	const resp1 = document.querySelector("#outResp1");
+	const resp2 = document.querySelector("#outResp2");
+	let nContas = 0;
+	let valContas = 0;
+	let resp = "";
+	frm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	const valor = Number(frm.valor.value);
+	
+	nContas = nContas + 1;
+	valContas = valContas + valor;
+	resp = resp + descConta.value + ` - R$${valor.toFixed(2)}` + `\n`;
+	resp1.innerText = `${resp} -----------------------------`;
+	resp2.innerText = `${nContas} conta(s) - Com total de R$ ${valContas.toFixed(2)}`;
+	})
+			</script>
+
+</html>

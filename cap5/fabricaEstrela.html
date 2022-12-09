@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Fábrica de estrela</h1>
+<form>
+    <p>
+        Digite o número: <input type="number" id="num" required>
+    </p>
+
+    <input type="submit" value="Criar estrelinha">
+</form>
+
+<pre id="outResp1"></pre>
+</body>
+<script>
+    const frm = document.querySelector("form");
+    const num = document.querySelector("#num");
+    const resp1 = document.querySelector("#outResp1");
+    let resp = "";
+    frm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const num = Number(frm.num.value);
+
+        for (i = 1; i <= num; i++) { if (i % 2 == 0) { resp = resp + "*"; } else { resp = resp + "-"; } } resp1.innerText = `${resp}`;
+    });
+</script>
+
+</html>
