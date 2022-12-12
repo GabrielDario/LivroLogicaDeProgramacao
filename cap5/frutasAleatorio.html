@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<h1>Programa repete Fruta</h1>
+<form>
+  <p>
+    Digite uma fruta: <input type="text" id="fruta" required>
+  </p>
+  <p>
+    Digite o número: <input type="number" id="num" required>
+  </p>
+
+  <input type="submit" value="Repetir fruta">
+</form>
+
+<pre id="outResp1"></pre>
+</body>
+<script>
+  const frm = document.querySelector("form");
+  const num = document.querySelector("#num");
+  const fruta = document.querySelector("#fruta");
+  const resp1 = document.querySelector("#outResp1");
+
+  let resp = "";
+  frm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const num = Number(frm.num.value);
+    const fruta = frm.fruta.value;
+    for (i = 0; i <= (num * 2) - 1; i++) {
+      if (i % 2 == 0) {
+        resp = resp + fruta;
+      } else if (i == (num * 2) - 1) {
+        resp = resp + "  ";
+      } else {
+        resp = resp + " * ";
+      }
+
+    }
+    resp1.innerText = `${resp}`;
+  });
+</script>

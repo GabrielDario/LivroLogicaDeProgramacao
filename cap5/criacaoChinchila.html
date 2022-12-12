@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Programa criação de Chinchilas</h1>
+<form>
+    <p>
+        Digite o nº de chimchilas para reproduzir(par): <input type="number" id="chimchilas" required>
+    </p>
+    <p>
+        Estimativa por ano: <input type="number" id="ano" required>
+    </p>
+
+    <input type="submit" value="Mostrar Previsão para Chinchilas">
+</form>
+
+<pre id="outResp1"></pre>
+</body>
+<script>
+    const frm = document.querySelector("form");
+    let ano = document.querySelector("#ano");
+    let chimchilas = document.querySelector("#chimchilas");
+
+    let resp1 = document.querySelector("#outResp1");
+
+    let resp = "";
+    frm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        ano = Number(frm.ano.value);
+        chimchilas = Number(frm.chimchilas.value);
+
+        for (i = 0; i < ano; i++) {
+            console.log(`${i + 1}º Ano: ${chimchilas} Chinchilas`);
+            chimchilas = chimchilas * 3;
+        }
+        resp1.innerText = `${resp}`;
+    });
+</script>
