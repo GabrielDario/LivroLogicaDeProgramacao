@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="menu1">
+        <h1>Consultório Odontológico</h1>
+        Paciente <input type="text" id="nomePaciente"> <br> <br>
+        <input type="button" value="Atender" id="atender">
+        <input type="button" value="Adicionar" id="adicionar">
+        <input type="button" value="Urgência" id="urgencia">
+    </div>
+    <div class="menu2">
+        <h2>Lista de espera</h2>
+        <p id="listaId">...</p>
+    </div>
+</body>
+<!-- <script type="text/javascript" src="consultorio.js"></script> -->
+
+<script>
+    let atenderBtn = document.getElementById("atender");
+    let adicionarBtn = document.getElementById("adicionar");
+    let urgenciaBtn = document.getElementById("urgencia");
+
+    let nomePaciente = document.getElementById("nomePaciente");
+    let listaId = document.getElementById("listaId");
+
+    let lista = [];
+
+    atenderBtn.addEventListener("click", () => {
+
+        lista.shift();
+        console.log(lista);
+        ordenarPaciente();
+    });
+
+
+    adicionarBtn.addEventListener("click", () => {
+        nome = nomePaciente.value;
+        console.log(nome)
+        if (nome == null || nome == undefined || nome == "") {
+            alert("Nome invalido");
+        } else {
+            lista.push(nome);
+            console.log(lista);
+            alert("Paciente Adicionado!");
+            nomePaciente.value = "";
+        }
+        ordenarPaciente();
+    });
+
+    urgenciaBtn.addEventListener("click", () => {
+        nome = nomePaciente.value;
+        if (nome == null || nome == undefined || nome == "") {
+            alert("Nome invalido");
+        } else {
+            alert("Paciente Emergencia Adicionado!");
+            lista.unshift(nomePaciente.value);
+        }
+        ordenarPaciente();
+    });
+
+    function ordenarPaciente() {
+        listaId.textContent = "";
+        console.log(`Tamanho: ${lista.length}`)
+        for (i = 0; i < lista.length; i++) {
+            console.log(lista[i]);
+            listaId.innerHTML = listaId.innerHTML + `<br>` + lista[i];
+        }
+    }
+
+
+</script>
+
+</html>

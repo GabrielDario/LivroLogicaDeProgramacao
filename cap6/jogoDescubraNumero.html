@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Jogo acerte o número</h1>
+    <input type="NUMBER" id="numero">
+    <input type="button" value="Apostar" id="btnApostar">
+    <input type="button" value="Jogar Novamente" id="btnZerar"> <br>
+    <h3>ERROS :
+        <span id="qntErros">0</span>
+        <span>( <span id="numErros"></span>)</span>
+    </h3>
+    <h3>Chances:
+        <span id="chances">6</span>
+    </h3>
+    <h3><span id="gameOver"></span> </h3>
+</body>
+<script>
+    let nErros = 0;
+    let listaErros = [];
+    let numeroSorteado = Math.floor(Math.random() * 100);
+    let verificando = false;
+    let numeroChutado = document.getElementById("numero");
+    let apostar = document.getElementById("btnApostar");
+    let qntErros = document.getElementById("qntErros");
+    let numErros = document.getElementById("numErros");
+    let chances = document.getElementById("chances");
+    let gameOver = document.getElementById("gameOver");
+
+    apostar.addEventListener("click", e => {
+        console.log(`Sorteado: ${numeroSorteado} Chute: ${numeroChutado.value}`);
+        listaErros.push(numeroChutado.value);
+        //VERIFICAR SE ESTÁ BATENDO OS NÚMEROS
+        for (i = 0; i < listaErros.length; i++) {
+            if (listaErros[i] == numeroSorteado) {
+                verificando = true;
+            }
+        }
+
+        if (verificando == true) {
+            alert("ACERTOU!");
+            location.reload();
+        } else {
+            if (numeroChutado.value > numeroSorteado) {
+                alert("ERROU! NÚMERO MENOR");
+            } else {
+                alert("ERROU! NÚMERO MAIOR");
+            }
+
+            if (nErros == 5) {
+                gameOver.textContent = `GAME OVER! VOCÊ PERDEU!`;
+                alert(`Você PERDEU! O NÚMERO ERA ${numeroSorteado}`);
+                location.reload();
+            }
+
+            if (nErros == 0) {
+                numErros.textContent = numeroChutado.value;
+            } else {
+                numErros.textContent = numErros.textContent + "," + numeroChutado.value;
+            }
+
+            nErros = nErros + 1;
+        }
+        atualizarErros();
+        console.log(listaErros)
+    });
+
+    function atualizarErros() {
+
+        qntErros.textContent = nErros;
+        chances.textContent = 6 - nErros;
+    }
+
+</script>
+
+</html>
