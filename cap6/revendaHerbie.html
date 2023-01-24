@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Revenda do Herbie</h1>
+    <p>Modelo <input type="text" id="idModelo"></p>
+    <p>Preco R$: <input type="number" id="idPreco">
+        <input type="button" value="Adicionar" id="adicionar">
+    </p>
+    <input type="button" value="Listar" id="listar">
+    <input type="button" value="Filtrar" id="filtrar">
+    <input type="button" value="Simular" id="simular">
+    <br><br>
+    <span></span>
+</body>
+<script>
+  const modelo = document.getElementById("idModelo");
+const preco = document.getElementById("idPreco");
+
+let adicionar = document.getElementById("adicionar");
+let listar = document.getElementById("listar");
+let filtrar = document.getElementById("filtrar");
+let simular = document.getElementById("simular");
+
+let span = document.querySelector("span");
+
+let carros = [];
+
+adicionar.addEventListener("click", e => {
+
+  if (modelo.value == "" || preco.value == "") {
+    alert("VAZIO!");
+  } else {
+    alert("CARRO ADICIONADO");
+
+    carros.push({ modelo: modelo.value, preco: preco.value });
+    modelo.value == "";
+    preco.value == ""
+  }
+  modelo.value = "";
+  preco.value = "";
+  console.log(carros);
+});
+
+listar.addEventListener("click", e => {
+  console.log("listar!");
+  if (carros.length == 0) {
+    alert("Não há carros listados");
+    return;
+  }
+
+  const lista = carros.reduce((acumulador, carro) =>
+    acumulador + carro.modelo + " - R$: " + carro.preco + "\n", "");
+  span.innerText = `Lista de Carros Cadastrados\n${"-".repeat(40)}\n${lista}`
+});
+
+filtrar.addEventListener("click", e => {
+  console.log("Filtrar!");
+  const maximo = Number(prompt("Qual o valor máximo que deseja pagar?"));
+
+  if (maximo <= 0 || isNaN(maximo)) {
+    alert("Invalido")
+    return;
+  }
+
+  const filtrarCarro = carros.filter(carro => carro.preco <= maximo);
+
+  if (filtrarCarro.length == 0) {
+    alert("Não há carros para esse valor");
+    return;
+  }
+
+  let lista = "";
+  for (const carro of filtrarCarro) {
+    lista += `${carro.modelo} - R$ ${carro.preco}\n`;
+  }
+  span.innerText = `Carro até R$${maximo}\n${"-".repeat(40)}\n${lista}`
+});
+
+simular.addEventListener("click", e => {
+  console.log("SIMULAR!");
+
+  const desconto = Number(prompt("Qual Percentual de desconto"));
+
+  if (desconto == 0 || isNaN(desconto)) {
+    alert("Desconto Invalido");
+    return;
+  }
+
+  const carroDesc = carros.map(aux => ({
+    modelo: aux.modelo,
+      preco: aux.preco - (aux.preco * desconto / 100)
+  }))
+let lista = "";
+for(const carro of carroDesc) {
+  lista += `${carro.modelo} - R$: ${carro.preco}\n`
+}
+span.innerText = `Carros com desconto: ${desconto}%\n${"-".repeat(40)}\n${lista}`
+});
+</script>
+
+</html>
