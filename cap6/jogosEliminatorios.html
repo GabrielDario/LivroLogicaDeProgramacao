@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Jogos Eliminatórios</h1>
+
+	<p>Clube <input type="text" id="time"></p>
+
+		<input type="button" value="Adicionar time" id="adicionar">
+		<input type="button" value="Listar times" id="listar">
+		<input type="button" value="Montar rodada" id="rodada">
+   <br><br>
+   <span ></span>
+</body>
+<script>
+    let time = document.getElementById("time");
+
+    let adicionar = document.getElementById("adicionar");
+    let listar = document.getElementById("listar");
+    let rodada = document.getElementById("rodada");
+
+    let span = document.querySelector("span");
+
+    let times = [];
+
+    adicionar.addEventListener("click", e => {
+
+        if (time.value == "") {
+            alert("VAZIO!");
+        } else {
+            alert("Time ADICIONADO");
+
+            times.push(time.value);
+            time.value = "";
+        }
+
+        console.log(times);
+    });
+
+    listar.addEventListener("click", e => {
+        console.log("listar!");
+        if (times.length == 0) {
+            alert("Não há Times listados");
+            return;
+        }
+
+        const lista = times.reduce((acumulador, time) =>
+            acumulador + time + "\n", "");
+        span.innerText = `Lista de Times\n${"-".repeat(40)}\n${lista}`
+    });
+
+    rodada.addEventListener("click", e => {
+        console.log("Montar!");
+        if (times.length == 0) {
+            alert("Nenhum time");
+            return;
+        }
+
+        if (times.length % 2 != 0) {
+            alert("Números impar de times");
+            return;
+        }
+        let lista = "";
+        let cont = 1;
+        for (const time of times) {
+
+            console.log(cont)
+            if (cont % 2 != 0) {
+                lista += `${time} x `
+                cont++;
+            } else {
+                lista += `${time} \n`
+                cont++;
+            }
+        }
+        span.innerText = `Rodada de jogos: \n${"-".repeat(40)}\n${lista}`
+
+    });
+</script>
+
+</html>

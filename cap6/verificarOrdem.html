@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Verificar ordem</h1>
+
+	<p>Número <input type="number" id="numero"></p>
+
+		<input type="button" value="Adicionar" id="adicionar">
+		<input type="button" value="Verificar Ordem" id="listar">
+		<br><br>
+		<span id="listarNumeros"></span> <br>
+		<span id="verificarNumeros"></span>
+</body>
+<script>
+    let numero = document.getElementById("numero");
+
+    let adicionar = document.getElementById("adicionar");
+    let listar = document.getElementById("listar");
+
+
+    let listarNumeros = document.getElementById("listarNumeros");
+    let verificarNumeros = document.getElementById("verificarNumeros");
+
+    let numeros = [];
+
+    adicionar.addEventListener("click", e => {
+
+        if (numero.value == "") {
+            alert("VAZIO!");
+        } else {
+            alert("Time ADICIONADO");
+
+            numeros.push(numero.value);
+            listarNumeros.innerHTML = listarNumeros.innerHTML + numero.value + ",";
+            numero.value = "";
+        }
+
+
+        console.log(numeros);
+    });
+
+    listar.addEventListener("click", e => {
+        console.log("listar!");
+        if (numeros.length == 0) {
+            alert("Não há números listados");
+            return;
+        }
+        let crescrente = true;
+        for (i = 0; i < numeros.length; i++) {
+            console.log(`${numeros[i]} ${numeros[i - 1]}`);
+            if (Number(numeros[i]) < Number(numeros[i - 1])) {
+                crescrente = false;
+                console.log("NOO");
+            }
+        }
+
+        if (crescrente == true) {
+            verificarNumeros.innerHTML = "Está em ordem";
+        } else {
+            verificarNumeros.innerHTML = "Não está em ordem";
+        }
+    });
+
+</script>
+
+</html>

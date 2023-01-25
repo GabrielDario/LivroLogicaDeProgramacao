@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" conteaprovadosnt="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Programa concurso</h1>
+
+	<p>Candidato ----------<input type="text" id="nome"></p>
+	<p>Número de acertos <input type="number" id="acertos">
+		<input type="button" value="Adicionar" id="adicionar">
+	</p>
+
+	<input type="button" value="Listar" id="listar">
+	<input type="button" value="2ª ETAPA" id="aprovados">
+	<br><br>
+	<span></span> <br>
+</body>
+<script>
+	let nome = document.getElementById("nome");
+	let acertos = document.getElementById("acertos");
+
+	let adicionar = document.getElementById("adicionar");
+	let listar = document.getElementById("listar");
+	let aprovados = document.getElementById("aprovados");
+
+	let span = document.querySelector("span");
+	let canditados = [];
+
+	adicionar.addEventListener("click", e => {
+
+		if (nome.value == "" || acertos.value == "") {
+			alert("VAZIO!");
+		} else {
+			alert("Aluno adiconado");
+
+			canditados.push({ nome: nome.value, acertos: acertos.value });
+			nome.value = "";
+			acertos.value = "";
+		}
+
+
+		console.log(canditados);
+	});
+
+	listar.addEventListener("click", e => {
+		console.log("listar!");
+		if (canditados.length == 0) {
+			alert("Não há pessoas listados");
+			return;
+		}
+
+		const lista = canditados.reduce((acumulador, canditado) =>
+			acumulador + canditado.nome + " - Acertos: " + canditado.acertos + "\n", "");
+		span.innerText = `Lista de Candidato Cadastrados\n${"-".repeat(40)}\n${lista}`
+	});
+
+
+	aprovados.addEventListener("click", e => {
+		console.log("Filtrar!");
+		const maximo = Number(prompt("Qual o valor valor da aprovação"));
+
+		if (maximo <= 0 || isNaN(maximo)) {
+			alert("Invalido")
+			return;
+		}
+
+		const filtrarCandidatos = canditados.filter(canditado => canditado.acertos >= maximo);
+
+		if (filtrarCandidatos.length == 0) {
+			alert("Não há alunos aprovados");
+			return;
+		}
+
+		let lista = "";
+		for (const canditado of filtrarCandidatos) {
+			lista += `${canditado.nome} - ${canditado.acertos}\n`;
+		}
+		span.innerText = `Alunos aprovados nota superior a ${maximo}\n${"-".repeat(40)}\n${lista}`
+	});
+</script>
+
+</html>
