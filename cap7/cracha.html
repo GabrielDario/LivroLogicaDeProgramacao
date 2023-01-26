@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie seu crachá</title>
+</head>
+
+<body>
+    <h1>Crie seu crachá</h1>
+    <p>Digite seu nome Completo <input type="text" id="nome"></p>
+    <input type="button" value="Verificar crachá" id="verificar">
+    <br><br>
+    <span></span>
+</body>
+<script>
+    let nome = document.getElementById("nome");
+    let verificar = document.getElementById("verificar");
+    let span = document.querySelector("span");
+    verificar.addEventListener("click", e => {
+        console.log("Teste");
+        if (nome.value == "") {
+            alert("Nome vazio!");
+            return;
+        }
+
+        let posicao1 = nome.value.indexOf(" ");
+        let posicao2 = nome.value.lastIndexOf(" ");
+        let primeiroNome = nome.value.substr(0, posicao1);
+        let ultimoNome = nome.value.substr(posicao2 + 1, nome.value.length);
+        span.textContent = `${primeiroNome} ${ultimoNome}`;
+    })
+</script>
+
+</html>
