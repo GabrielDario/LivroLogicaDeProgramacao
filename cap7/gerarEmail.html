@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Gerar Email</h1>
+    <input type="text" placeholder="Digite seu nome" id="nome">
+    <input type="submit" id="gerar">
+    <br> <br>
+    <span></span>
+</body>
+<script>
+    //Split
+    // let frutas = 'Banana,Maçã,Limão,Morango';
+    // let listaFrutas = frutas.split(',');
+    // console.log(listaFrutas);
+    //Split
+    // let frutas = 'Banana,Maçã,Limão,Morango';
+    // let listaFrutas = frutas.split(',');
+    // console.log(listaFrutas);
+
+    let nomCompleto = document.getElementById("nome");
+    let gerar = document.getElementById("gerar");
+    let span = document.querySelector("span");
+
+    let dominioEmail = '@empresa.com'
+
+    gerar.addEventListener("click", e => {
+        let contadorEspacos = 0;
+        let inicioLetras = '';
+        if (nomCompleto.value == "") { //Verificar se está vazio
+            alert("Espaço vazio!");
+            return;
+        }
+        const partes = nomCompleto.value.split(" "); //LISTA DIVIDIDA ENTRE OS ESPAÇOS
+        let email = '';
+        const tam = partes.length; //quantas espaços tem MEU NOME = 3
+
+        for (let i = 0; i < tam - 1; i++) {
+            email += partes[i].charAt(0);
+        }
+        console.log(email);
+        console.log(partes)
+        email += partes[tam - 1] + '@empresa.com';
+        span.textContent += `Email ${email.toLowerCase()}`;
+
+
+    });
+</script>
+
+</html>

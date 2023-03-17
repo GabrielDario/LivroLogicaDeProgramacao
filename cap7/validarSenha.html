@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Validar Senha</h1>
+	<input type="password" id="senha" placeholder="Sua senha"> <br><br>
+	<input type="button" value="Gravar Senha" id='gravarSenha'>
+</body>
+
+</html>
+<script>
+    let senha = document.getElementById('senha');
+let btnSenha = document.getElementById('gravarSenha');
+
+btnSenha.addEventListener('click', () => {
+  console.log('Senha!');
+
+//Verificar se é vazia
+  if(senha.value == '') {
+    alert('Insira uma senha!');
+    return;
+  }
+//1 possui entre 8 e 15 caractere
+//2 ter UM número mínimo
+//3 ter UMA letra minúscukla ------
+//4 ter DUAS letras MAIUSCULAS ------
+//5 1 SIMBOLO ------
+
+  //let palavra = 'SeNaw3'
+  const senhaValidar = senha.value;
+  console.log(senhaValidar)
+
+  const letras = senhaValidar.length;
+  const validar1 = (letras >= 8 && letras <= 16);
+  console.log(validar1);
+  console.log(letras);
+  const validar2 = senhaValidar.match(/[0-9]/g);
+  const validar3 = senhaValidar.match(/[a-z]/g); 
+  const validar4 = senhaValidar.match(/[A-Z]/g);
+  const validar5 = senhaValidar.match(/\W|_/g);
+
+
+  validacao = validar1 == false || validar2 == null ||validar3 == null || validar4 == null || validar4.length == 1
+    || validar5 == null;
+
+  if (validacao) {
+    alert('NÃO ATENDEU AOS REQUISITOS');
+  } else {
+    alert('SENHA SALVA!')
+    console.log()
+  }
+  
+});
+</script>
