@@ -3,25 +3,34 @@ console.log('Digite uma formula');
 
 let formula = prompt("Digite a formula: ");
 
-let abriu = 0;
-let fechou = 0;
-let cadeado = false;
+
+let abriu = 0; //quantos (
+let fechou = 0; //quantos )
+
+let contChave = 0; //verificar se quebra com contador
+let quebrarChave = false;
 
 for (const caracteres of formula) {
-  if(caracteres == '(') {
+  if (caracteres == '(') {
     abriu++;
-    cadeado = true;
+    contChave++;
   }
   if (caracteres == ')') {
     fechou++;
-    cadeado = false;
+    contChave--;
+  }
+
+  if(contChave < 0) { //se se tiver fechado ) completo e fechar mais um ), quebra
+    quebrarChave = true;
   }
 }
 
-const validacao = abriu == fechou && cadeado == false
-if(validacao) {
-    console.log('Fórmula Certa!');
-} else {
-    console.log('Fórmula Errada!');
-}
 
+//validacao, mesmo numero ( e ), e verificar cadeado
+const validacao = abriu == fechou && quebrarChave == false;
+if (validacao) {
+  console.log('Fórmula Certa! ');
+ 
+} else {
+  console.log('Fórmula Errada!');
+}
