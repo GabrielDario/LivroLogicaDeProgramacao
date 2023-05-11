@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Programa para criptografia</title>
+</head>
+
+<body>
+	<h1>Programa para criptografia</h1>
+	<p>Digite sua mensagem<input type="text" id="mensagem"></p>
+		<input type="button" value="Criptografar" id="criptografar">
+		<input type="button" value="Decriptografar" id="decriptografar">
+<br><br>
+		<span></span>
+</body>
+
+<script>
+    let mensagem = document.getElementById("mensagem");
+let criptografarBtn = document.getElementById("criptografar");
+let decriptografarBtn = document.getElementById("decriptografar");
+let span = document.querySelector("span");
+let criptografar = "";
+let descriptografar = "";
+
+criptografarBtn.addEventListener("click", e => {
+  console.log(mensagem + ' 1');
+  mensagem = mensagem.value;
+  console.log(mensagem + ' 2');
+  for (i = 0; i < mensagem.length; i++) {
+    if (i % 2 != 0) {
+      criptografar = criptografar + mensagem[i];
+    }
+  }
+  for (i = 0; i < mensagem.length; i++) {
+    if (i % 2 == 0) {
+      criptografar = criptografar + mensagem[i];
+    }
+  }
+  span.textContent = criptografar;
+});
+
+decriptografarBtn.addEventListener("click", e => {
+  console.log("Decriptografar: " + criptografar);
+  let contadorFrente = 0;
+  let contadorTras = 0;
+  let contador = 1;
+
+  if (criptografar.length % 2 == 0) {
+    for (i = 0; i < criptografar.length; i++) {
+      if (i % 2 == 0) {
+        descriptografar = descriptografar +
+          criptografar[criptografar.length / 2 + contadorFrente];
+        contadorFrente++;
+        console.log(descriptografar + " par e par letras");
+      } else {
+        descriptografar = descriptografar +
+          criptografar[0 + contadorTras];
+        contadorTras++;
+        console.log(descriptografar + " impar e par letras");
+ 
+      }
+    }
+  } else {
+    console.log('imparrr');
+   
+    descriptografar = criptografar;
+ 
+    for (i = 0; i < criptografar.length -1; i++) {
+      console.log('contador:' + contador);
+      console.log('letra para mudar: ' + criptografar[i]);
+      if (contador == criptografar.length) {
+        console.log('passou');
+        contador = 1;
+        console.log(criptografar[contador] + " e " + criptografar[i])
+        descriptografar = descriptografar.replace(descriptografar[0], criptografar[i]); 
+        console.log(descriptografar);
+         contador++;
+      } else {
+        console.log(criptografar[contador] + " e " + criptografar[i])
+      descriptografar = descriptografar.replace(criptografar[contador], criptografar[i] );
+      contador = contador + 2;
+      console.log('desc:' + descriptografar);
+      }
+    }
+  }
+
+  span.textContent = descriptografar;
+});
+</script>

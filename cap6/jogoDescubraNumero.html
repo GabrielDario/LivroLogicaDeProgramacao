@@ -33,7 +33,7 @@
     let numErros = document.getElementById("numErros");
     let chances = document.getElementById("chances");
     let gameOver = document.getElementById("gameOver");
-
+    let maiorOuMenos;
     apostar.addEventListener("click", e => {
         console.log(`Sorteado: ${numeroSorteado} Chute: ${numeroChutado.value}`);
         listaErros.push(numeroChutado.value);
@@ -50,8 +50,10 @@
         } else {
             if (numeroChutado.value > numeroSorteado) {
                 alert("ERROU! NÚMERO MENOR");
+                maiorOuMenos = ' ↓ ';
             } else {
                 alert("ERROU! NÚMERO MAIOR");
+                maiorOuMenos = ' ↑ ';
             }
 
             if (nErros == 5) {
@@ -61,9 +63,9 @@
             }
 
             if (nErros == 0) {
-                numErros.textContent = numeroChutado.value;
+                numErros.textContent = numeroChutado.value + maiorOuMenos + ',';
             } else {
-                numErros.textContent = numErros.textContent + "," + numeroChutado.value;
+                numErros.textContent = numErros.textContent + maiorOuMenos  + numeroChutado.value + ',';
             }
 
             nErros = nErros + 1;
