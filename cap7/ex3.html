@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Programa para Palíndromo</title>
+</head>
+
+<body>
+	<h1>Programa para Palíndromo</h1>
+	<p>Digite sua mensagem<input type="text" id="frase"></p>
+		<input type="button" value="Verificar" id="verificar">
+		<br><br>
+		<span></span>
+</body>
+
+<script>
+let frase = document.getElementById("frase");
+let verificar = document.getElementById("verificar");
+let span = document.querySelector("span");
+
+
+verificar.addEventListener("click", e => {
+  console.log(frase);
+  console.log(frase.value);
+  if (frase.value == undefined || typeof frase == 'object') {
+    console.log('UND OU OBJ');
+    frase = frase.value;
+  }
+
+  let semEspaco = frase.replace(/\W|_/g, "");
+  let metadePalavras = Math.floor(semEspaco.length / 2);
+  let numLetras = semEspaco.length - 1; let contador = 0;
+  console.log(semEspaco);
+  for(i = 0; i <= metadePalavras; i++) {
+    if (semEspaco[i] == semEspaco[numLetras - i] ) {
+      console.log(semEspaco[i] + ' = ' + semEspaco[numLetras - i]);
+      contador ++;
+     }
+  }
+
+  if (contador == metadePalavras || contador == metadePalavras+1 ) {
+    console.log("Foi");
+    span.textContent = 'É Palíndrimo';
+    contador = 0;
+    frase.value = "";
+  } else {
+    span.textContent = 'NÃO É Palíndrimo';
+    contador = 0;
+    frase.value = "";
+  }
+});
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Programa para criptografia</title>
+</head>
+
+<body>
+	<h1>Programa para criptografia</h1>
+	<p>Digite sua mensagem<input type="text" id="mensagem"></p>
+		<input type="button" value="Criptografar" id="criptografar">
+		<input type="button" value="Decriptografar" id="decriptografar">
+		<br><br>
+		<span></span>
+</body>
+
+<script>
+	let mensagem = document.getElementById("mensagem");
+let criptografarBtn = document.getElementById("criptografar");
+let decriptografarBtn = document.getElementById("decriptografar");
+let span = document.querySelector("span");
+let criptografar = "";
+let descriptografar = "";
+
+criptografarBtn.addEventListener("click", e => {
+if(typeof mensagem == 'object') {
+mensagem = mensagem.value;
+}
+
+
+for (i = 0; i < mensagem.length; i++) { if (i % 2 !=0) { criptografar=criptografar + mensagem[i]; } } for (i=0; i <
+	mensagem.length; i++) { if (i % 2==0) { criptografar=criptografar + mensagem[i]; } } span.textContent=criptografar;
+	criptografar=' ' ; }); decriptografarBtn.addEventListener("click", e=> {
+	console.log("Decriptografar: " + criptografar);
+	console.log(mensagem);
+	span.textContent = mensagem;
+	});
+</script>
