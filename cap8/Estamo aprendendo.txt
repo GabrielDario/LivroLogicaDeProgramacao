@@ -1,0 +1,7 @@
+Funcion e Arrow Function,
+Funções com passagem de parâmetros
+Funções com retorno de valor , RETURN
+EXEMPLO: REVENDA
+Função com parâmetros REST
+EXEMPLO: Função calcularMedia(...)quantos parametros você quisesse e ele fazia a soma
+Funções anônimas
