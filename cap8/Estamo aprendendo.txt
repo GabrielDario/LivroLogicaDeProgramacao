@@ -2,6 +2,14 @@ Funcion e Arrow Function,
 Funções com passagem de parâmetros
 Funções com retorno de valor , RETURN
 EXEMPLO: REVENDA
+
 Função com parâmetros REST
 EXEMPLO: Função calcularMedia(...)quantos parametros você quisesse e ele fazia a soma
+
 Funções anônimas
+e => {}
+setInterval,
+Ex: A cada 5000 miliseconds disparar um evento...
+Eventos
+Todos os tipos de ação de uma página.
+Ex: PIZZARIA, Troca do botao SELECT quando troca de pizza para bebida
