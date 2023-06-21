@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Natação</title>
+</head>
+
+<body>
+	<h1>Definir senha Usuário</h1>
+	<p> Nome Completo
+		<input type="text"  id="nome">
+    </p>
+
+		<input type="button" value="Gerar Senha" id="gerarSenha">
+		<br><br>
+		<span id="senhaGerada"></span>
+	</p>
+</body>
+
+</html>
+<script>
+ let nome = document.getElementById("nome");
+let gerarSenha = document.getElementById("gerarSenha");
+let senhaGerada = document.getElementById("senhaGerada");
+
+let contEspaco = false;
+let nomeAtual;
+
+gerarSenha.addEventListener("click", e => {
+  if(nome.value != String) {
+    nomeAtual = nome.value;
+  } 
+  validarNome(nomeAtual);
+
+  if (contEspaco == true) {
+    obterSobrenome(nomeAtual);
+    contarVogais(nomeAtual);
+  }
+});
+
+const validarNome = (nomeAtual) => {
+  for (const nomes of nomeAtual) {
+    if(nomes == " ") {
+      contEspaco = true;
+    }
+  }
+
+  if(contEspaco == false) {
+    alert('Nome invalido!');
+    return;
+  
+  }
+};
+
+const obterSobrenome = (nomeAtual) => {
+  let ultimoEspaco = 0;
+  let obterSobrenome;
+ 
+  for(i = 0; i < nomeAtual.length; i++) {
+    if (nomeAtual[i] == " ") {
+      ultimoEspaco = i;
+    }
+  }
+  obterSobrenome = nomeAtual.substring(ultimoEspaco +1, nomeAtual.length);
+
+  senhaGerada.textContent = obterSobrenome;
+
+};
+
+const contarVogais = (nomeAtual) => {
+  let nVogais = 0;
+  const listaVogais = ['a','e','i','o','u'];
+
+  for(const nomes of nomeAtual) {
+    for (const vogais of listaVogais) {
+      if (nomes == vogais) {
+         nVogais = nVogais+1;
+       }
+    }
+  }
+  if (nVogais < 10) {
+    senhaGerada.textContent = senhaGerada.textContent + "0" + nVogais;
+  } else {
+    senhaGerada.textContent = senhaGerada.textContent  + nVogais;
+  }
+};
+
+</script>

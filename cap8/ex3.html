@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Veterinário</title>
+</head>
+
+<body>
+	<h1>Veterinário</h1>
+	<p>Valor da Vacina
+		<input type="number" id="valor">
+    </p>
+		<p> Possui Convênio </p>
+		<input type="radio" id="sim" value="sim" name="convenio" checked> Sim
+		<input type="radio" id="nao" value="nao" name="convenio">Não
+		<br><br>
+
+		<div id="convenioId">
+			<label for="convenio">Escolha um Convênio</label>
+			<br><br>
+			<select  id="convenioName">
+            <option value="amigo">Amigo dos Animais</option>
+            <option value="saude">Saúde animal</option>
+        </select>
+		</div>
+		<br>
+		<input type="button" value="Ver Preço" id="gerarPreco">
+		<br><br>
+		<span id="desconto"></span>
+		<br><br>
+		<span id="preco"></span>
+	</p>
+</body>
+
+</html>
+
+<script>
+    let valor = document.getElementById("valor");
+
+let convenioName = document.getElementById("convenioName");
+let sim = document.getElementById("sim");
+let nao = document.getElementById("nao");
+
+let gerarPreco = document.getElementById("gerarPreco");
+
+let preco = document.getElementById("preco");
+let desconto = document.getElementById("desconto");
+let precoAtual;
+let contEspaco = false;
+
+gerarPreco.addEventListener("click", e => {
+  if (valor.value != Number) {
+    precoAtual = Number(valor.value);
+  } 
+  calcularDesconto(precoAtual);
+});
+
+const calcularDesconto = (precoAtual) => {
+ 
+  if (sim.checked) {
+
+     if(convenioName.value == "amigo") {
+  
+       descontoCalculo(0.2);
+     } else {
+       descontoCalculo(0.5);
+     }
+  } else {
+    descontoCalculo(0.1);
+  }
+  
+}
+
+sim.addEventListener("click", e => {
+  console.log('Sim');
+  convenioId.style.display = "block";
+});
+nao.addEventListener("click", e => {
+  convenioId.style.display = "none";
+
+});
+
+function descontoCalculo(descontoo) {
+  console.log(precoAtual)
+  let descontado = Number(precoAtual * (descontoo))
+  let aPagar = precoAtual - descontado;
+  
+
+  preco.textContent = "A pagar: R$ " + aPagar;
+  desconto.textContent = "Desconto: R$ " + descontado;
+}
+</script>
