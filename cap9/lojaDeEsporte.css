@@ -1,0 +1,19 @@
+pre {
+    font-size: 1.2em;
+}
+
+.cores-Vasco {
+    color: black;
+    background-color: black;
+    color: white; 
+}
+
+.cores-Avai {
+    color: white;
+    background-color: blue;
+}
+
+.cores-Crb {
+    color: white;
+    background-color: red;
+}
