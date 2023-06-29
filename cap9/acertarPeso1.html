@@ -14,65 +14,77 @@
     <input type="text" id="nome">
 
     <p>Peso em gramas: </p>
-    <input type="text" id="palpite">
+    <input type="Number" id="palpite">
     <br><br>
     <input type="button" value="Apostar" id="apostar">
     <input type="button" value="Vencedor" id="vencedor">
     <input type="button" value="Limpar Listar" id="limpar">
+
+    <br><br>
+    <span id="span"></span>
+    <br><br>
+
 </body>
 
 </html>
-
 <script>
-  const inputs = document.querySelectorAll("input");
-let span = document.getElementById("span");
 
-let nomeAtual;
-let pesoAtual;
-let apostas = [];
-let pesoMelancia = 7200;
+</script>
+<script>
+    const inputs = document.querySelectorAll("input");
+    let span = document.getElementById("span");
+    let peso = document.getElementById("peso");
 
-inputs[2].addEventListener("click", e => {
+    let nomeAtual;
+    let pesoAtual;
+    let apostas = [];
+    let pesoMelancia = Math.floor(Math.random() * 10000 + 1);
 
-  if (inputs[0].value !== String || inputs[0].value !== String) {
-    nomeAtual = inputs[0].value;
-    pesoAtual = inputs[1].value;
-    if (nomeAtual == "" || pesoAtual == "") {
-      alert("Algum campo vazio");
-      return;
-    }
-    apostas.push({ nome: nomeAtual, peso: pesoAtual });
+    inputs[2].addEventListener("click", e => {
 
-  }
-  alert("Aposta Feita");
-  inputs[0].value = "";
-  inputs[1].value = "";
+        if (inputs[0].value !== String || inputs[0].value !== String) {
+            nomeAtual = inputs[0].value;
+            pesoAtual = inputs[1].value;
+            if (nomeAtual == "" || pesoAtual == "") {
+                alert("Algum campo vazio");
+                return;
+            }
+            apostas.push({ nome: nomeAtual, peso: pesoAtual });
 
-  span.innerHTML = span.innerHTML + "<br>" + nomeAtual + " - " + pesoAtual;
- console.log(apostas);
- 
-  
-})
+        }
+        alert("Aposta Feita");
+        inputs[0].value = "";
+        inputs[1].value = "";
+        span.innerHTML = span.innerHTML + "<br>" + nomeAtual + " - " + pesoAtual;
 
-inputs[3].addEventListener("click", e => {
-  let valor = 50000;
-  let indiceSalvo;
-  for(i = 0 ; i < apostas.length; i++){
-    let diferenca = Number(pesoMelancia - apostas[i].peso);
-    console.log(diferenca);
-    if (diferenca < valor) {
-      console.log('Mais Perto do valor!')
-      valor = diferenca;
-      console.log(valor);
-    }
-  } 
- 
-});
+    })
 
-inputs[4].addEventListener("click", e => {
-  span.innerHTML = " ";
-  alert("Lista esvaziada");
-  apostas = [];
-  console.log(apostas);
-});
+    inputs[3].addEventListener("click", e => {
+        let valor = 50000;
+        let indiceSalvo;
+        let diferenca;
+        for (i = 0; i < apostas.length; i++) {
+
+
+            diferenca = Number(pesoMelancia - apostas[i].peso);
+            diferenca = Math.abs(diferenca);
+            console.log(diferenca)
+            if (diferenca < valor) {
+                valor = diferenca;
+                indiceSalvo = apostas[i].nome;
+            }
+        }
+
+        alert('Resultado do ganhador \n -------------------- \n' +
+            indiceSalvo + ' - Diferença de ' + valor + 'g do peso \n'
+            + 'Peso da melancia: ' + pesoMelancia);
+        pesoMelancia = Math.floor(Math.random() * 10000 + 1);
+    });
+
+    inputs[4].addEventListener("click", e => {
+        span.innerHTML = " ";
+        alert("Lista esvaziada");
+        apostas = [];
+        console.log(apostas);
+    });
 </script>
