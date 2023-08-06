@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<h1>Compras da Semana</h1>
+Produto<br>
+<input type="text" id="produto">
+<br><br>
+<input type="button" value="Adicionar" id="adicionar">
+<input type="button" value="Limpar Lista" id="limpar">
+
+<p>Produtos Adicionados</p>
+<p>--------------------------------</p>
+<span></span>
+<body>
+
+</body>
+
+</html>
+<script>
+
+let produto = document.getElementById("produto");
+let adicionar = document.getElementById("adicionar");
+let limpar = document.getElementById("limpar");
+let span = document.querySelector("span");
+
+let lista = [];
+
+adicionar.addEventListener("click", e => {
+
+  if (typeof produto !== 'string') {
+    produto = produto.value;
+    console.log(produto);
+  }
+  produto = document.getElementById("produto").value;
+  
+  if (produto == "") {
+    alert('vazio')
+    return;
+  } else {
+    lista.push(produto);
+    lista.sort()
+    alert('Produto adicionado: ' + produto);
+
+    for (const listas of lista) {
+      span.innerHTML =  lista + '\n'
+    }
+    document.getElementById("produto").value = ""
+  }
+
+});
+
+limpar.addEventListener("click", e => {
+    lista = [];
+  alert('Esvaziar Lista ');
+  span.innerHTML = '';
+});
+</script>

@@ -1,5 +1,4 @@
 
-
 let visitas = localStorage.getItem("visitas");
 
 console.log(typeof visitas)

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Herbie - Controle de serviços</h1>
+    Servico - Veículo <br>
+    <input type="text">
+    <br><br>
+    <input type="button" id="adicionar" value="Adicionar Serviço">
+    <input type="button" id="exercutar" value="Executar Serviço">
+
+    <p>Serviços pendentes : </p>
+
+    <h2>Servico em execução</h2>
+    <span></span>
+</body>
+
+</html>
+
+<script>
+    let servico = document.getElementById("servico");
+    let adicionar = document.getElementById("adicionar");
+    let executar = document.getElementById("executar");
+    let pendentes = document.getElementById("pendentes");
+    let span = document.querySelector("span");
+
+    let servicos = [];
+    let nServicos;
+
+    adicionar.addEventListener("click", e => {
+
+        if (typeof servico !== 'String') {
+            servico = servico.value;
+        }
+        servico = document.getElementById("servico").value;
+        if (servico == "") {
+            alert('vazio')
+            return;
+        } else {
+            nServicos = servicos.length;
+
+            servicos.push(servico);
+            alert('Serviço adicionado: ' + servico);
+
+            span.innerHTML = servicos[0];
+
+            pendentes.innerHTML = 'Serviços pendentes: ' + (nServicos + 1);
+            document.getElementById("servico").value = ""
+        }
+
+        console.log(servicos)
+    });
+
+    executar.addEventListener("click", e => {
+
+        servicos.shift(servico);
+
+        nServicos = servicos.length;
+        console.log(nServicos)
+        alert('Servico Feito! ')
+
+        pendentes.innerHTML = 'Serviços pendentes: ' + (nServicos);
+        span.innerHTML = servicos[0];
+
+        if (nServicos <= 0) {
+            span.innerHTML = 'SEM SERVIÇO';
+        }
+    });
+</script>
