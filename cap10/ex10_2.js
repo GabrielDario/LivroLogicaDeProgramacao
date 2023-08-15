@@ -7,11 +7,11 @@ const inSoma = document.getElementById("inSoma");
 const span = document.querySelector("span");
 
 const gerarMoedas = () => {
-    const num1_00 = Math.ceil(Math.random() * 5)
-    const num0_50 = Math.ceil(Math.random() * 5)
-    const num0_25 = Math.ceil(Math.random() * 5)
-    const num0_10 = Math.ceil(Math.random() * 5)
-    const num0_05 = Math.ceil(Math.random() * 5)
+    const num1_00 = Math.ceil(Math.random() * 10)
+    const num0_50 = Math.ceil(Math.random() * 10)
+    const num0_25 = Math.ceil(Math.random() * 10)
+    const num0_10 = Math.ceil(Math.random() * 10)
+    const num0_05 = Math.ceil(Math.random() * 10)
 
     const alt1_00 = "Moedas de um real";
     const alt0_50 = "Moedas de Cinquenta Centavos";
