@@ -3,7 +3,7 @@ const frm = document.querySelector("form") // obtém elementos da página
 const dvMoedas = document.querySelector("#divMoedas")
 
 
-const criarMoedas = (num, moeda, textoAlt, classe) => {
+const criarMoedas = (num, moeda, textoAlt,  ) => {
     // cria laço de repetição para inserir várias imagens de moedas na página
     for (let i = 1; i <= num; i++) {
         const novaMoeda = document.createElement("img") // cria elemento img

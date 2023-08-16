@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Armazenar Filmes</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4" style="width: 25.333333%;">
+                <img 
+                src="https://images.vexels.com/media/users/3/130344/isolated/lists/61967ede86db12b8dd294b7df269237b-icone-de-tira-de-filme-plana.png" 
+                alt="Filmes" class="img-fluid" >
+            </div>
+            <div class="col-sm-8"  >
+                <h1>Meus Filmes Favoritos</h1>
+                <form>
+                    <p><label for="inTitulo">Título do Filme:</label>
+                        <input type="text" class="form-control" id="inTitulo" required autofocus>
+                    </p>
+                    <p><label for="inGenero">Gênero:</label>
+                        <input type="text" class="form-control" id="inGenero" required>
+                    </p>
+                    <input type="submit" class="btn btn-primary float-right mb-3" value="Adicionar">
+                </form>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Título do Filme</th>
+
+                        <th>Gênero</th>
+                        <th>Ações</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="ex10_3.js"></script>
+</body>
+
+</html>
