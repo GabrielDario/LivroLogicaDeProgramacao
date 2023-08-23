@@ -2,23 +2,37 @@ let exibirVelas = document.getElementById("exibirVelas");
 let trocarVelas = document.getElementById("trocarVelas");
 const frm = document.querySelector("form");
 
+let primeiraVela = ['img/1-2.png'];
+let segundaVela = ['img/1-5.png'];
+let terceiraVela = ['img/1-5.png'];
+let contador = 1;
 exibirVelas.addEventListener("click", (e) => {
-    console.log('1');
-    e.preventDefault() ;
+    e.preventDefault();
     let inIdade = frm.inIdade.value;
-     
-    console.log(inIdade);
-    if(inIdade >= 1 && inIdade <= 120) {
-        alert('Idade Válida');
+
+
+
+    if (inIdade >= 1 && inIdade <= 120) {
+  
+        let pai = document.getElementById("imagens");
+        pai.innerHTML = "";
+        for(let i = 0; i < inIdade.length; i++) {
+            const primeira = document.createElement("img");
+            const path =  "img/" + contador + "-" + inIdade[i] + ".png";
+            primeira.src = path;
+            pai.appendChild(primeira);
+            
+        }
+      
+
     } else {
-        alert('Idade Inválida');
+        alert('Idade Inválida.\nInsira entre 1 e 120');
         return;
     }
 
-    frm.inIdade.value = "" ;
-    frm.inIdade.focus() ;
+    frm.inIdade.value = "";
+    frm.inIdade.focus();
 });
 
 trocarVelas.addEventListener("click", (e) => {
-    console.log('2');
 });
