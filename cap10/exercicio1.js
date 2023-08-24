@@ -1,30 +1,22 @@
 let exibirVelas = document.getElementById("exibirVelas");
 let trocarVelas = document.getElementById("trocarVelas");
 const frm = document.querySelector("form");
+let inIdade;
+let contador = 0;
 
-let primeiraVela = ['img/1-2.png'];
-let segundaVela = ['img/1-5.png'];
-let terceiraVela = ['img/1-5.png'];
-let contador = 1;
 exibirVelas.addEventListener("click", (e) => {
     e.preventDefault();
-    let inIdade = frm.inIdade.value;
-
-
-
+    inIdade = frm.inIdade.value;
+    contador = 1;
     if (inIdade >= 1 && inIdade <= 120) {
-  
         let pai = document.getElementById("imagens");
         pai.innerHTML = "";
-        for(let i = 0; i < inIdade.length; i++) {
+        for (let i = 0; i < inIdade.length; i++) {
             const primeira = document.createElement("img");
-            const path =  "img/" + contador + "-" + inIdade[i] + ".png";
+            const path = "img/" + contador + "-" + inIdade[i] + ".png";
             primeira.src = path;
             pai.appendChild(primeira);
-            
         }
-      
-
     } else {
         alert('Idade Inválida.\nInsira entre 1 e 120');
         return;
@@ -35,4 +27,23 @@ exibirVelas.addEventListener("click", (e) => {
 });
 
 trocarVelas.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (contador == 0) {
+        alert('Exibe as velas primeiros!');
+        return;
+    } else {
+        contador++;
+        if(contador == 4) {
+            contador = 1;
+        }
+        let pai = document.getElementById("imagens");
+        pai.innerHTML = "";
+        for (let i = 0; i < inIdade.length; i++) {
+            const primeira = document.createElement("img");
+            const path = "img/" + contador + "-" + inIdade[i] + ".png";
+            primeira.src = path;
+            pai.appendChild(primeira);
+        }
+    }
 });
