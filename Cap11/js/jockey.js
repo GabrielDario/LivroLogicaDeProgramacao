@@ -129,18 +129,19 @@ frm.btGanhador.addEventListener("click", () => {
     }
     // uso do método reduce para somar o valor das apostas
     const total = apostas.reduce((acumulador, aposta) => acumulador + aposta.valor, 0);
+    const lucroCasa = (total.toFixed(2) * 50) / 100;
     // concatena em resumo o resultado a ser exibido na página
     let resumo = `Resultado Final do Páreo\n${'-'.repeat(30)}\n`
     resumo += `No Total de Apostas: ${apostas.length}\n`;
     resumo += `Total Geral R$: ${total.toFixed(2)}\n`;
-    resumo += `Lucro da Casa (90%)R$: ${(total.toFixed(2) * 90) / 100}\n`;
+    resumo += `Lucro da Casa (50%)R$: ${lucroCasa}\n`;
     resumo += `Ganhador N° ${ganhador} - ${obterCavalo(ganhador)}\n\n`;
     resumo += `N° de Apostas certas: ${contarApostas(ganhador)}\n`;
     resumo += `Total Apostado certeiro R$: ${totalizarApostas(ganhador).toFixed(2)}\n`;
 
 
     let apostador = 0;
-    let dividirGanhadores = Number(total.toFixed(2) - (total.toFixed(2) * 90) / 100).toFixed(2);
+    let dividirGanhadores = Number(total.toFixed(2) - lucroCasa).toFixed(2);
     let totalApostadores = totalizarApostas(ganhador).toFixed(2);
     resumo += `Dividir entre os ganhadoresR$: ${dividirGanhadores}\n\n`;
 
