@@ -47,6 +47,7 @@ frm.btConfirmar.addEventListener("click", () => {
         imgPoltrona.src = "img/occupied.png"; // modifica atributo da imagem
         reservadas.pop(); // remove do vetor a reserva já alterada
     }
+    
     localStorage.setItem("teatroOcupadas", ocupadas.join(";"));
 });
 
