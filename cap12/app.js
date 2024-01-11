@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const port = 3001;
+// Arquivo com rotas para o cadastro de livros
+const livros = require('./livros');
 
 app.get('/', (req, res) => {
     res.send('Olá... Bem-vindo!');
@@ -12,6 +14,7 @@ app.get('/cap12', (req, res) => {
 
 // para reconhecer os dados recebidos como sendo um objeto no formato JSON
 app.use(express.json());
+app.use('/livros', livros); // identificação da rota e da const (require) associada
 app.post('/filmes', (req, res) => {
     // const titulo = req.body.titulo;
     // const genero = req.body.genero;
