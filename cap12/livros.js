@@ -1,9 +1,11 @@
-const cors = require("cors");
-router.use(cors());
+
 const express = require("express"); // pacotes a serem utilizados
 const router = express.Router();
 const dbKnex = require("./data/db_config"); // dados de conexão com o banco de dados
 // método get é usado para consulta
+
+const cors = require("cors");
+router.use(cors());
 router.get("/", async (req, res) => {
     try {
         // para obter os livros pode-se utilizar .select().orderBy() ou apenas .orderBy()
